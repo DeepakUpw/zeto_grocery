@@ -3,7 +3,7 @@ import 'package:zeto_grocery_app/colors.dart';
 
 AppBar homeAppBar() {
   return AppBar(
-    backgroundColor: ZetoColors.zeptoAppBarclr,
+    backgroundColor: ZetoColors.zetoAppBarclr,
     title: Row(
       children: [
         Text(

@@ -11,7 +11,7 @@ Widget titlebar(String title, String subtitle) {
             child: Text(
               title,
               style:
-                  TextStyle(color: ZetoColors.zeptoAppBarclr, fontSize: 18.5),
+                  TextStyle(color: ZetoColors.zetoAppBarclr, fontSize: 18.5),
             )),
         Spacer(),
         TextButton(

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:zeto_grocery_app/data/biscuits_product_datas.dart';
+import 'package:zeto_grocery_app/data/categ_to_explore_images.dart';
+import 'package:zeto_grocery_app/data/choco_product_datas.dart';
 import 'package:zeto_grocery_app/data/frozen_food_datas.dart';
 import 'package:zeto_grocery_app/data/fruits_product_datas.dart';
 import 'package:zeto_grocery_app/data/grid_images.dart';
 import 'package:zeto_grocery_app/data/heading_and_title.dart';
+import 'package:zeto_grocery_app/data/slider_images.dart';
+import 'package:zeto_grocery_app/data/snacks_products_datas.dart';
 import 'package:zeto_grocery_app/data/trending_products_data.dart';
+import 'package:zeto_grocery_app/data/veg_products-datas.dart';
+import 'package:zeto_grocery_app/widgets/cate_toExplore_details.dart';
 import 'package:zeto_grocery_app/widgets/grid_product_details.dart';
 import 'package:zeto_grocery_app/widgets/home_app_bar.dart';
 import 'package:zeto_grocery_app/widgets/image_slider.dart';
@@ -21,7 +28,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   //trending products catelog container
-  Widget trendingProductsContainer() {
+  Widget trendingProducts() {
     return Container(
       height: 185,
       child: Padding(
@@ -44,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   //categorys catelog container
-  Widget categoriesContainer() {
+  Widget categories() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
       height: 500,
@@ -129,6 +136,46 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //vasitables
+  Widget vagetables() {
+    return Container(
+        height: 185,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: vegProducds.length,
+              itemBuilder: (context, index) {
+                return viewProductsdetails(
+                  vegProducds[index].productimage,
+                  vegProducds[index].productname,
+                  vegProducds[index].netweight,
+                  vegProducds[index].oldprice.toString(),
+                  vegProducds[index].newprice,
+                  // frozenProducts[index].offer.toString(),
+                );
+              }),
+        ));
+  }
+
+  // Categories to explore
+  Widget categoriesToExplore() {
+    return Container(
+        height: 190,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: cateExplore1.length,
+              itemBuilder: (context, index) {
+                return cateToExploreprdct(
+                  cateToExploretitle1[index],
+                  cateExplore1[index],
+                );
+              }),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,12 +185,12 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            imageSlider(),
+            imageSlider(imgSliderList),
             searchBar(),
             titlebar(titles.title1, "SeeMore >"), //trending products
-            trendingProductsContainer(),
+            trendingProducts(),
             titlebar(titles.title2, "SeeMore >"), //categories
-            categoriesContainer(),
+            categories(),
             titlebar(titles.title3, ""), //top collection slider
             topCollectionSlider(),
             titlebar(titles.title4, "SeeMore >"), //frozen foods
@@ -152,6 +199,84 @@ class _HomeScreenState extends State<HomeScreen> {
             gudnessOfFruits(),
             titlebar(titles.title6, ""), //In Focus Today slider
             inFocusTodaySlider(),
+            titlebar(titles.title7, "SeeMore >"), //Vagetables
+            vagetables(),
+            titlebar(titles.title8, ""), //Categories to explore
+            categoriesToExplore(),
+            titlebar(titles.title9, ""), //Season's Top Pick!
+            Container(
+                height: 190,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: cateExplore2.length,
+                      itemBuilder: (context, index) {
+                        return cateToExploreprdct(
+                            cateToExploretitle2[index], cateExplore2[index]);
+                      }),
+                )),
+            titlebar(titles.title10, "SeeMore >"),
+            Container(
+                height: 185,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: biscuitsProducds.length,
+                      itemBuilder: (context, index) {
+                        return viewProductsdetails(
+                          biscuitsProducds[index].productimage,
+                          biscuitsProducds[index].productname,
+                          biscuitsProducds[index].netweight,
+                          biscuitsProducds[index].oldprice.toString(),
+                          biscuitsProducds[index].newprice,
+                          // frozenProducts[index].offer.toString(),
+                        );
+                      }),
+                )),
+            titlebar(titles.title11, "SeeMore >"),
+            Container(
+                // margin: EdgeInsets.symmetric(vertical: 10),
+                height: 185,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: chocoProducds.length,
+                      itemBuilder: (context, index) {
+                        return viewProductsdetails(
+                          chocoProducds[index].productimage,
+                          chocoProducds[index].productname,
+                          chocoProducds[index].netweight,
+                          chocoProducds[index].oldprice.toString(),
+                          chocoProducds[index].newprice,
+                          // frozenProducts[index].offer.toString(),
+                        );
+                      }),
+                )),
+            titlebar(titles.title12, "SeeMore >"),
+            Container(
+                height: 185,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snacksProducds.length,
+                      itemBuilder: (context, index) {
+                        return viewProductsdetails(
+                          snacksProducds[index].productimage,
+                          snacksProducds[index].productname,
+                          snacksProducds[index].netweight,
+                          snacksProducds[index].oldprice.toString(),
+                          snacksProducds[index].newprice,
+                          // frozenProducts[index].offer.toString(),
+                        );
+                      }),
+                )),
+            Container(
+              height: 120,
+            )
           ],
         ),
       ),

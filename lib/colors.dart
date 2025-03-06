@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ZetoColors {
-  static const Color zeptoAppBarclr = Color(0xff46036C);
+  static const Color zetoAppBarclr = Color(0xff46036C);
   static const Color iconColor = Color(0xffFE3368);
   static const Color saffold = Color(0xFF0F2F5);
   static const Color bacg = Color.fromRGBO(70, 3, 108, 0.1);

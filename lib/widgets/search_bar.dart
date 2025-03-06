@@ -12,14 +12,14 @@ Widget searchBar() {
       height: 50,
       child: TextField(
         scrollPadding: EdgeInsets.zero,
-        cursorColor: ZetoColors.zeptoAppBarclr,
+        cursorColor: ZetoColors.zetoAppBarclr,
         cursorHeight: 22,
         decoration: InputDecoration(
             // focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
             prefixIcon: Icon(
               Icons.search,
-              color: ZetoColors.zeptoAppBarclr,
+              color: ZetoColors.zetoAppBarclr,
             ),
 
             // icon: Icon(Icons.search),
